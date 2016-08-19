@@ -1,0 +1,37 @@
+<p>This is the skins view.</p>
+
+<dom-module id="reserve">
+	<div class="row section" id="mainPict" ng-repeat="(key, details) in skinsInfo.products">
+		<div class="col-xs-6 col-sm-4 col-md-3 " ng-class="{true: 'threePicSold', false:'threePic clickable'}[details.sold==true]">
+			<div> sold {{details.sold}}</div>
+			<img ng-if="details.sold==true" class="img-responsive" src="images/lamm{{key}}-small.jpg"  alt="lambskin{{key}}">
+			<img ng-if="details.sold==false" class="img-responsive lambImgs clickable"  src="images/lamm{{key}}-small.jpg"  alt="lambskin{{key}}"  ng-click="skinsInfo.alertBox(details.nr)">
+			<paper-button ng-if="details.sold==true" class="bokBtn" raised id="soldBtn">Booked</paper-button>
+			<paper-button ng-if="details.sold==false" class="bokBtn clickable" raised ng-click="skinsInfo.alertBox(details.nr)">To booking</paper-button>
+			<hr>
+		</div>
+	</div>
+</dom-module>
+
+
+
+        <!-- Modal -->
+ <div class="modals" ng-repeat="(key, value) in skinsInfo.products">
+	<div class="modal fade" id="lamm{{key}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{key}}" aria-hidden="true">
+	  	<div class="modal-dialog">
+	   		 <div class="modal-content">
+	      		<div class="modal-body">
+	        		<img class="img-responsive" src="images/lamm{{key}}-medium.jpg" alt="lamm {{key}}">
+	        		<p class="textRes">Jag vill reservera detta skinn</p>
+	      		</div>
+	      		<form is="iron-form" id="form">
+					  <paper-input type="text" label="Your name" required auto-validate autocomplete="on" autofocus error-message="Fill in your name if you want to reserve this skin" id="reserveratNamn{{key}}" class="accountRequired"></paper-input>
+					  <gold-email-input label="your emailadress" auto-validate id="reserveratMail{{key}}" class="accountRequired"></gold-email-input>
+					  <paper-button type="submit" class="submitBtn" id="reserveBtn{{key}}" raised ng-click="skinsInfo.submitForm(key)">Reservera</paper-button>
+					  <paper-button class="closeBtn" data-dismiss="modal" raised >Stäng</paper-button>
+				</form><br>
+				<p id="storageValue{{key}}"></p>
+	    	</div>
+	  	</div>
+	</div>
+ </div>

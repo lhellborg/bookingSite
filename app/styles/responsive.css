@@ -1,0 +1,55 @@
+
+/*responsive when more than 1001 px */
+@media screen and (min-width: 1001px) {
+	.container {
+		max-width: 1000px;
+		margin-right: auto;
+		margin-left: auto;
+
+	}
+}
+
+/*resonsive between 600 and 1000px*/
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+	.logoPic {
+		width: 30%;
+	}
+	.headerText {
+		width: 70%;
+	}
+}
+
+/*responsive when less than 800px*/
+@media screen and (max-width: 800px) {
+	.threePic {
+		margin: 0 auto;
+		opacity: 1.0;
+    	filter: alpha(opacity=100); /* For IE8 and earlier */
+	}
+	h3 {
+		font-size: 30px;
+	}
+
+	.sectionName {
+		text-align: center;
+	}
+	.submitBtn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    position: relative;
+    width: 140px;
+    margin-left: -70px;
+    left: 30%;
+}
+
+.closeBtn {
+	margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    position: relative;
+    width: 80px;
+    margin-left: -40px;
+    left: 60%;
+}
+}

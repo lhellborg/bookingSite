@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- polymer elements  -->
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/gold-phone-input/gold-phone-input.html">
+    <link rel="import" href="bower_components/gold-email-input/gold-email-input.html">
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400' rel='stylesheet' type='text/css'>
+
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="lambSkinsApp">
+
+    <!-- Add your site or application content here -->
+    <header>
+      <h1 class="row header">Lamb skins</h1>
+    </header>
+
+      <div class="container">
+      <!--main-->
+      <main class="all">
+
+        <div class="row priceBox">
+
+
+          <div class="col-md-4">
+            <p class="pricetag">Welcome to book some skins</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+        <div ng-include="'views/skins.html'" ng-controller="SkinsCtrl as skinsInfo"></div>
+
+      </main>
+    </div>
+
+
+
+
+    <div class="footer">
+      <div class="container">
+        <p><span class="glyphicon glyphicon-heart"></span> by Linda Hellborg</p>
+      </div>
+    </div>
+
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/skins.js"></script>
+    <script src="scripts/firebase.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
