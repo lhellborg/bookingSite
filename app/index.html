@@ -31,18 +31,15 @@
 
     <!-- Add your site or application content here -->
     <header>
-      <h1 class="row header">Lamb skins</h1>
+      <h1 class="row header">Booking site</h1>
     </header>
 
       <div class="container">
-      <!--main-->
       <main class="all">
 
-        <div class="row priceBox">
-
-
+        <div class="row infoRow">
           <div class="col-md-4">
-            <p class="pricetag">Welcome to book some skins</p>
+            <p class="infoBox" tabindex="-1">Welcome to see our items</p>
           </div>
         </div>
 
@@ -52,7 +49,7 @@
           </div>
         </div>
 
-        <div ng-include="'views/skins.html'" ng-controller="SkinsCtrl as skinsInfo"></div>
+        <div ng-include="'views/skins.html'" ng-controller="SkinsCtrl as productInfo"></div>
 
       </main>
     </div>
@@ -73,7 +70,11 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <script src="bower_components/ng-polymer-elements/ng-polymer-elements.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 

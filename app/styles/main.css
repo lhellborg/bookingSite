@@ -36,11 +36,23 @@ h1.header {
   padding-bottom: 5px;
 }
 
-.priceBox {
+.infoRow {
   display: flex;
   flex-wrap: wrap;
 }
 
+.infoBox {
+    border-style: groove;
+    padding: 10px;
+    margin: 20px;
+    font-size: large;
+    border-radius: 10px;
+    border-width: 3px;
+    background: radial-gradient(circle, #f5f5f5, #ccc, #777);
+    color: black;
+    border-color: rgba(0, 0, 0, 0.43);
+    opacity: 0.7;
+}
 
 .section {
   display: flex;
@@ -63,17 +75,20 @@ img {
   padding-right: 25px;
 }
 
-.pricetag {
-    border-style: groove;
-    padding: 10px;
-    margin: 20px;
-    font-size: large;
-    border-radius: 10px;
-    border-width: 3px;
-    background: radial-gradient(circle, #f5f5f5, #ccc, #777);
-    color: black;
-    border-color: rgba(0, 0, 0, 0.43);
-    opacity: 0.7;
+/*modal*/
+
+#modal {
+  width:50%;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 5px;
+  border: thin #000 solid;
+  background-color:#fff;
+  z-index:3; /* places the modal dialog on top of everything else */
+  position:fixed;
+  top:25%;
+  left:25%;
+  display:none;
 }
 
 .modal-body {
@@ -84,18 +99,12 @@ img {
   max-width: 500px;
 }
 
-.bokBtn {
-  margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    position: relative;
-    width: 120px;
-    margin-left: -60px;
-    left: 50%;
-}
-
-#soldBtn {
-  cursor: default;
+.screen-reader-offscreen {
+  position:absolute;
+  left:-999px;
+  width:1px;
+  height:1px;
+  top:auto;
 }
 
 .submitBtn {
@@ -118,18 +127,35 @@ img {
     left: 70%;
 }
 
-.namnInput {
-  background: grey;
-    border-radius: 3px;
-    border-color: darkslategrey;
-}
-
-.reserveText {
-  font-size: large;
-}
-
 .textRes {
   margin-bottom: 0px;
+}
+
+#form {
+  margin: 0 auto;
+    max-width: 90%;
+}
+
+h2 {
+  text-align: center;
+  color: #1B0605;
+  margin-left: 15px;
+  font-size: 18px;
+}
+ /*end modal*/
+
+.bokBtn {
+  margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    position: relative;
+    width: 120px;
+    margin-left: -60px;
+    left: 50%;
+}
+
+#soldBtn {
+  cursor: default;
 }
 
 h1 {
@@ -183,41 +209,37 @@ span {
 }
 
 .threePic {
-    opacity: 0.6;
-    filter: alpha(opacity=40); /* For IE8 and earlier */
     max-width: 100%;
 }
 
-.threePic:hover {
+.threePic img {
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+.bokBtn:focus {
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+  color: red;
+}
+
+.bokBtn:focus + img{
+opacity: 1.0!important;
+filter: alpha(opacity=100);
+}
+
+.threePic:hover img {
     opacity: 1.0;
     filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
-#form {
-  margin: 0 auto;
-    max-width: 90%;
-}
-
-
-h2 {
-  color: #1B0605;
-  margin-left: 15px;
-  margin-top: 40px;
-  margin-bottom: 15px;
-  font-size: 37px;
-}
-
-h3 {
-  text-transform: uppercase;
-  text-align: center;
-  color: #631E1E;
-  font-size: 36px;
-}
 
 p {
   text-align: center;
   margin-bottom: 10px;
   font-size: large;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .clickable {

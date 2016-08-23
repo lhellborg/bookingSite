@@ -14,113 +14,29 @@ angular.module('lambSkinsApp')
 
   	var myFirebaseRef = new Firebase("https://lambskins.firebaseio.com/");
 
-  	vm.products = $firebaseObject(myFirebaseRef);
-  	vm.productsArray = $firebaseArray(myFirebaseRef)
-  	console.log(vm.productsArray)
-
+  	// vm.products = $firebaseObject(myFirebaseRef);
+  	vm.products = $firebaseArray(myFirebaseRef);
+  	console.log(vm.products)
 
 // used the first time to set some data in firebase
-				//  	myFirebaseRef.set({
-				// 	lamb17: {
-				// 		nr: 17,
-				// 		name: "Linda",
-				//  		tel: "",
-				// 		email: ""
-				// }
-				// });
 
-// myFirebaseRef.set({
-// 		1 : {
-// 			'productName':'lamb1',
-// 			'nr':'1',
-// 			'reservedByName':"",
-// 			"reservedByTel":"",
-// 			"reservedByEmail":"",
-// 			"sold":false
-// 		},
-// 		2 : {
-// 			'productName':'lamb2',
-// 			'nr':'2',
-// 			'reservedByName':"",
-// 			"reservedByTel":"",
-// 			"reservedByEmail":"",
-// 			"sold":false
-// 		},
-// 		3 : {
-// 			'productName':'lamb3',
-// 			'nr':'3',
-// 			'reservedByName':"",
-// 			"reservedByTel":"",
-// 			"reservedByEmail":"",
-// 			"sold":true
-// 		}
-// 	});
-
-	// vm.products = {
-	// 	1 : {
-	// 		'productName':'lamb1',
-	// 		'nr':'1',
-	// 		'name':"",
-	// 		"tel":"",
-	// 		"email":"",
-	// 		"sold":false
-	// 	},
-	// 	2 : {
-	// 		'productName':'lamb2',
-	// 		'nr':'2',
-	// 		'name':"",
-	// 		"tel":"",
-	// 		"email":"",
-	// 		"sold":false
-	// 	},
-	// 	3 : {
-	// 		'productName':'lamb3',
-	// 		'nr':'3',
-	// 		'name':"",
-	// 		"tel":"",
-	// 		"email":"",
-	// 		"sold":true
-	// 	}
-	// };
-
-
-	myFirebaseRef.orderByChild("nr").on("value", function(snapshot) {
-		$('#mainPict').empty();
-		vm.products = (snapshot.val());
-		console.log(vm.products)
-
-		// for (var i = 1; i < 16; i++) {
-		// 	if (obj["lamb" + i]) {
-		// 		console.log("lamb " + i + " sold");
-		// 		appendLambImgSold(i);
-		// 	} else {
-		// 		appendLambImg(i);
-		// 	}
-		// }
-
-	}, function (errorObject) {
-		console.log("The read failed: " + errorObject.code);
-		alert("Sorry could not get the database, try again later :-)");
-	});
-
-
-	// function appendLambImg(nr) {
-	// 	var lambImg = ('<div class="col-xs-6 col-sm-4 col-md-3 threePic clickable">' +
-	// 						'<img class="img-responsive lambImgs clickable" src="images/lamm'+nr+'-small.jpg"  alt="lambskin'+nr+'" onclick="skinsInfo.alertBox('+nr+')">' +
-	// 						'<paper-button class="bokBtn clickable" raised ng-click="skinsInfo.alertBox('+nr+')">To booking</paper-button>' +
-	// 						'<hr>' +
-	// 					'</div>');
-	// 	$(".section").append(lambImg);
-	// }
-
-	// function appendLambImgSold(nr) {
-	// 	var lambImgSold = ('<div class="col-xs-6 col-sm-4 col-md-3 threePicSold">' +
-	// 						'<img class="img-responsive" src="images/lamm'+nr+'-small.jpg"  alt="lambskin'+nr+'">' +
-	// 						'<paper-button class="bokBtn" raised id="soldBtn">Booked</paper-button>' +
-	// 						'<hr>' +
-	// 					'</div>');
-	// 	$(".section").append(lambImgSold);
-	// }
+	// myFirebaseRef.set({
+	// 	1 : {'productName':'lamb1','nr':'1','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	2 : {'productName':'lamb2','nr':'2','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	3 : {'productName':'lamb3','nr':'3','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	4 : {'productName':'lamb4','nr':'4','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	5 : {'productName':'lamb3','nr':'5','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	6 : {'productName':'lamb6','nr':'6','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	7 : {'productName':'lamb7','nr':'7','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	8 : {'productName':'lamb8','nr':'8','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	9 : {'productName':'lamb9','nr':'9','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	10 : {'productName':'lamb10','nr':'10','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	11 : {'productName':'lamb11','nr':'11','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	12 : {'productName':'lamb12','nr':'12','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	13 : {'productName':'lamb13','nr':'13','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	14 : {'productName':'lamb14','nr':'14','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// 	15 : {'productName':'lamb15','nr':'15','reservedByName':"","reservedByTel":"","reservedByEmail":"","sold":false},
+	// });
 
 
 	vm.range = function(min, max, step) {
@@ -132,75 +48,105 @@ angular.module('lambSkinsApp')
 	    return input;
 	};
 
-	vm.alertBox = function(nr) {
-		$("#lamm" + nr).modal("show");
+	vm.selectedProduct = null; //the selected product info
+	vm.reservationForm = {}; //the form that saves the input locally
+	vm.messageToBuyer = ""; //message shown when the reserved button is clicked
+	vm.showButton = true; //linked to the reserved button in the modal which will disappear when clicked
+
+	vm.focusedElementBeforeModal;
+
+	var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+	vm.focusableElements;
+	vm.firstTabStop;
+	vm.lastTabStop;
+
+
+	vm.modalToggle = function(details, $event) {
+		$("#reserveItems").attr("aria-hidden", "true"); //unable to interact with the items on the main page
+		vm.focusedElementBeforeModal = document.activeElement; //save the current focused element to get back to when closing the modal
+		vm.selectedProduct = details;
+		vm.messageToBuyer = "";
+		vm.showButton = true;
+		$("#reserveModal").modal('show');
+		$("#reserveModal").attr("aria-hidden", "false"); //enable voiceover interaction with the modal window
+		$(".modal").bind('keydown', trapTabKey); //listen for and trap the keyboard
+		vm.focusableElements = $(".modal").find(focusableElementsString); //get all focusable elements in modal
+		vm.focusableElements = Array.prototype.slice.call(vm.focusableElements);
+		vm.firstTabStop = vm.focusableElements[1];
+		vm.lastTabStop = vm.focusableElements[vm.focusableElements.length - 1];
+		vm.firstTabStop.focus();
 	};
 
-
-	vm.submitForm = function(nr) {
-
-		myFirebaseRef.on("value", function(snapshot) {
-		 	console.log(snapshot.val());
-
-			var storVal = "storageValue" + nr;
-			document.getElementById(storVal).innerHTML = "";
-
-			var resName = "reserveratNamn" + nr;
-			var resMail = "reserveratMail" + nr;
-			var name = document.getElementById(resName).value;
-			var mail = document.getElementById(resMail).value;
-
-			var reservedSkin = skinReservedTest(nr);
-
-			var valid = validateInput(name, mail); //check all the required fields
-
-		    if (valid) {
-		    	if (reservedSkin) {
-		    		document.getElementById(storVal).innerHTML = "Sorry, this skin is already booked";
-		    	} else {
-				var firebaseRefChild = "lamb" + nr;
-				var objectToInsert = {};
-				objectToInsert[firebaseRefChild] = {
-					nr: nr,
-					reservedByName: name,
-					reservedByEmail: mail
-				};
-				myFirebaseRef.update(objectToInsert);
-				document.getElementById(storVal).innerHTML = "Good Choice! We have reserved this skin for you.";
-				var resBtn = "reserveBtn" + nr;
-				var reserveBtn = document.getElementById(resBtn);
-				reserveBtn.remove();
+	function trapTabKey(e) {
+		if(e.keyCode === 9) { //TAB key press
+			if(e.shiftKey) { //shift TAB key press
+				if(document.activeElement === vm.firstTabStop) {
+					e.preventDefault();
+					vm.lastTabStop.focus()
+				}
+			} else { //TAB
+				if(document.activeElement === vm.lastTabStop) {
+					e.preventDefault();
+					vm.firstTabStop.focus();
 				}
 			}
-			else {
-				document.getElementById(storVal).innerHTML= "Please fill in all fields"; //when some required fields are missing
-			}
-
-		}, function (errorObject) {
-		  console.log("The read failed: " + errorObject.code);
-		  alert("Sorry could not get the bookings, try again later :-)");
-		});
+		}
+		if(e.keyCode === 27) { //Esc key
+			vm.closeModal();
+		}
 	};
 
-	function skinReservedTest(nr) {
-		var skinNr = nr+ "/name";
-		var reservedSkin = false;
-		myFirebaseRef.child(skinNr).on("value", function(snapshot) {
-	  		reservedSkin = snapshot.val();
-		});
-		return reservedSkin;
+	vm.closeModal = function() {
+		$("#reserveModal").modal('hide');
+		$("#reserveModal").attr("aria-hidden", "true"); //unable voiceover interaction with the modal window
+		$("#reserveItems").attr("aria-hidden", "false"); //enable voiceover interaction with the items on the main page
+		vm.focusedElementBeforeModal.focus();
 	}
 
-		// Since a required field that has never been "touched" will not show any error message, each input that is required has a class "accountRequired" that can be checked to see that the value is not empty.
-	function validateInput(name, mail) {
-		var isValid = true;
+	vm.submitForm = function(selectedProduct) {
 
-		if (name === "" ) {
-			return isValid = false;
-		} else if (mail === "") {
-			return isValid = false;
+		var valid = validateInput(vm.reservationForm.name, vm.reservationForm.email) //check all the required fields
+
+		if (valid) {
+			if (vm.selectedProduct.sold) {
+				vm.messageToBuyer = "Sorry, this skin is already booked.";
+			} else {
+				vm.selectedProduct = selectedProduct;
+				vm.selectedProduct.reservedByName = vm.reservationForm.name;
+				vm.selectedProduct.reservedByEmail = vm.reservationForm.email;
+				vm.selectedProduct.sold = true;
+				vm.products.$save(vm.selectedProduct).then(function(ref) {
+					ref.key() === vm.selectedProduct.$id;
+					vm.messageToBuyer = "Good Choice " + vm.selectedProduct.reservedByName + "! We have reserved this skin for you.";
+					vm.showButton = false;
+					$(".closeBtn").focus();
+					vm.focusedElementBeforeModal = $(".infoBox"); //get focus back to the side after reserved a product
+				}, function(error) {
+					console.log("The read failed: " + errorObject.code);
+					alert("Sorry, could not get the bookings now, try again later :-)")
+				});
+
+			}
+		} else {
+			vm.messageToBuyer = "Please fill in all fields";
 		}
-		return isValid;
+
+	}
+
+
+
+	// 	}, function (errorObject) {
+	// 	  console.log("The read failed: " + errorObject.code);
+	// 	  alert("Sorry could not get the bookings, try again later :-)");
+	// 	});
+	// };
+
+
+
+		// Since a required field that has never been "touched" will not show any error message, each input that is required has a class "accountRequired" that can be checked to see that the value is not empty.
+	function validateInput(name, email) {
+
+		return name && email;
 	}
 
   });

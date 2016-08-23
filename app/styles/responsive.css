@@ -21,6 +21,7 @@
 
 /*responsive when less than 800px*/
 @media screen and (max-width: 800px) {
+
 	.threePic {
 		margin: 0 auto;
 		opacity: 1.0;
@@ -30,26 +31,38 @@
 		font-size: 30px;
 	}
 
+	.threePicSold {
+		margin: 0 auto;
+	}
+
 	.sectionName {
 		text-align: center;
 	}
 	.submitBtn {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    position: relative;
-    width: 140px;
-    margin-left: -70px;
-    left: 30%;
+	    margin-top: 10px;
+	    margin-bottom: 10px;
+	    padding-top: 10px;
+	    position: relative;
+	    width: 140px;
+	    margin-left: -70px;
+	    left: 30%;
+	}
+
+	.closeBtn {
+		margin-top: 10px;
+	    margin-bottom: 10px;
+	    padding-top: 10px;
+	    position: relative;
+	    width: 80px;
+	    margin-left: -40px;
+	    left: 60%;
+	}
 }
 
-.closeBtn {
-	margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    position: relative;
-    width: 80px;
-    margin-left: -40px;
-    left: 60%;
-}
+
+@media (min-width: 768px) {
+	.modal-dialog {
+	    width: 50%;
+	    margin: 0px auto;
+	}
 }
