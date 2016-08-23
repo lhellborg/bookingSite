@@ -1,16 +1,48 @@
 
-<section class="row" id="reserveItems" aria-hidden="false">
-	<div class="col-xs-6 col-sm-3 col-md-2 section" id="mainPict" ng-repeat="(key, details) in productInfo.products">
+<h3 class="filterText">Filter by:</h3>
+<section class="row">
+	<div class="col-xs-3 col-sm-2 col-md-2 navItems">
+		<div class="productEntry clickable">
+			<img class="img-responsive clickable"  src="images/lamm1-small.jpg"  alt="grey lambskins"  ng-click="productInfo.colorFilter ='dark'; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='dark'; productInfo.filterItem()" aria-label="filter to view the grey skins">Grey lambskins</paper-button>
+		</div>
+	</div>
+	<div class="col-xs-3 col-sm-2 col-md-2 navItems">
+		<div class="productEntry clickable">
+			<img class="img-responsive clickable"  src="images/lamm8-small.jpg"  alt="lightgrey lambskins"  ng-click="productInfo.colorFilter ='medium'; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='medium'; productInfo.filterItem()" aria-label="filter to view the lightgrey skins">Lightgrey lambskins</paper-button>
+		</div>
+	</div>
+	<div class="col-xs-3 col-sm-2 col-md-2 articles">
+		<div class="productEntry clickable">
+			<img class="img-responsive clickable"  src="images/lamm9-small.jpg"  alt="white lambskins"  ng-click="productInfo.colorFilter ='white'; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='white'; productInfo.filterItem()" aria-label="filter to view the white skins">White lambskins</paper-button>
+		</div>
+	</div>
+	<div class="col-xs-3 col-sm-2 col-md-2 articles">
+		<div class="productEntry clickable">
+			<img class="img-responsive clickable"  src="images/lamm2-small.jpg"  alt="available lambskins"  ng-click="productInfo.sold ='false'; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter =''; productInfo.filterItem()" aria-label="filter to view the all skins">All available</paper-button>
+		</div>
+	</div>
+</section>
+<hr>
+
+
+
+<article class="row" id="reserveItems" aria-hidden="false">
+	<div class="col-xs-6 col-sm-3 col-md-2 section" ng-repeat="details in productInfo.products | filter: { color: productInfo.colorFilter}">
 		<div class="productEntry" ng-class="{true: 'threePicSold', false:'threePic clickable'}[details.sold==true]">
-			<paper-button ng-if="details.sold==true" class="bokBtn" raised id="soldBtn" tabindex="-1">Booked</paper-button>
+			<paper-button ng-if="details.sold==true" class="soldBtn" raised tabindex="-1">Booked</paper-button>
 			<img ng-if="details.sold==true" class="img-responsive" src="images/lamm{{details.nr}}-small.jpg"  alt="lambskin{{details.nr}}">
 
 			<paper-button ng-if="details.sold==false" class="bokBtn clickable" raised ng-click="productInfo.modalToggle(details)" aria-label="to booking modal window for skin{{details.nr}}">To booking</paper-button>
 			<img ng-if="details.sold==false" class="img-responsive lambImgs clickable"  src="images/lamm{{details.nr}}-small.jpg"  alt="lambskin{{details.nr}}"  ng-click="productInfo.modalToggle(details)" tabindex="-1">
+			<br>
  		<hr>
 		</div>
 	</div>
-</section>
+</article>
 
 
 
@@ -25,8 +57,8 @@
         		<h2 id="modalTitle" class="textRes">I want to reserve this product</h2>
       		</div>
       		<form is="iron-form" id="form">
-				  <paper-input type="text" ng-model="productInfo.reservationForm.name" label="Your name" required auto-validate autocomplete="on" autofocus error-message="Fill in your name if you want to reserve this skin" class="accountRequired" aria-label="Fill in your name if you want to reserve this skin" role="input"></paper-input>
-				  <gold-email-input ng-model="productInfo.reservationForm.email" label="your emailadress" auto-validate class="accountRequired" aria-label="Fill in your email adress if you want to reserve this skin" role="input"></gold-email-input>
+				  <paper-input type="text" ng-model="productInfo.reservationForm.name" label="Your name" required auto-validate autocomplete="on" autofocus error-message="Fill in your name if you want to reserve this skin" class="accountRequired" aria-label="Fill in your name if you want to reserve this skin"></paper-input>
+				  <gold-email-input ng-model="productInfo.reservationForm.email" label="your emailadress" auto-validate class="accountRequired" aria-label="Fill in your email adress if you want to reserve this skin" ></gold-email-input>
 				  <paper-button type="submit" id="reserveBtn" class="submitBtn" raised ng-click="productInfo.submitForm(productInfo.selectedProduct)" ng-show="productInfo.showButton" aria-label="reserve this skin for me">Reserve</paper-button>
 				  <paper-button class="closeBtn" data-dismiss="modal" raised ng-click="productInfo.closeModal()" aria-label="close the modal window">Close</paper-button>
 			</form><br>
