@@ -1,19 +1,53 @@
 //the serviceWorker
 var staticCacheName = 'bookingStatic-v1'
 
+
 self.addEventListener('install', function(event) {
     // save the scripts and styles needed for the page in cache
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
             return cache.addAll([
                 '/',
-                'images/*.jpg',
+                "images/lamm1-medium.jpg",
+                "images/lamm1-small.jpg",
+                "images/lamm10-medium.jpg",
+                "images/lamm10-small.jpg",
+                "images/lamm11-medium.jpg",
+                "images/lamm11-small.jpg",
+                "images/lamm12-medium.jpg",
+                "images/lamm12-small.jpg",
+                "images/lamm13-medium.jpg",
+                "images/lamm13-small.jpg",
+                "images/lamm14-medium.jpg",
+                "images/lamm14-small.jpg",
+                "images/lamm15-medium.jpg",
+                "images/lamm15-small.jpg",
+                "images/lamm2-medium.jpg",
+                "images/lamm2-small.jpg",
+                "images/lamm3-medium.jpg",
+                "images/lamm3-small.jpg",
+                "images/lamm4-medium.jpg",
+                "images/lamm4-small.jpg",
+                "images/lamm5-medium.jpg",
+                "images/lamm5-small.jpg",
+                "images/lamm6-medium.jpg",
+                "images/lamm6-small.jpg",
+                "images/lamm7-medium.jpg",
+                "images/lamm7-small.jpg",
+                "images/lamm8-medium.jpg",
+                "images/lamm8-small.jpg",
+                "images/lamm9-medium.jpg",
+                "images/lamm9-small.jpg",
                 'scripts/app.js',
                 'scripts/main.js',
                 'scripts/controllers/skins.js',
-                '/vulcanizedPolymer.html',
                 'styles/main.css',
                 'styles/responsive.css',
+                'views/skins.html',
+                '/favicon.ico',
+                '/index.html',
+                '/manifest.json',
+                '/vulcanizedPolymer.html',
                 'bower_components/jquery/dist/jquery.js',
                 'bower_components/webcomponentsjs/webcomponents.js',
                 'bower_components/bootstrap/dist/css/bootstrap.css',
@@ -101,4 +135,5 @@ return;
 //   "gcm_sender_id": "SENDERID"
 // }
 // cURL request
-// curl --header "Authorization: key=APIKEY" -application/json" https://fcm.googleapis.com/fcm/send -d "{\"registration_ids\":[\"REGISTRATIONID\"],\"notification\":{\"title\":\"test\",\"body\":\"testing\"},\"data\":{\"title\":\"erse\"}}"
+// curl --header "Authorization: key=APIKEY" -application/json" https://fcm.googleapis.com/fcm/send -d "{\"regi
+// \"notification\":{\"title\":\"test\",\"body\":\"testing\"},\"data\":{\"title\":\"erse\"}}"

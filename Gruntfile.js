@@ -6,9 +6,11 @@
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
-var packageJson = require('../package.json');
+
+//the variables used in swPrecache
+var packageJson = require('./package.json');
 var path = require('path');
-var swPrecache = require('../node_modules/sw-precache.js');
+var swPrecache = require('./node_modules/sw-precache');
 
 module.exports = function (grunt) {
 
@@ -498,26 +500,28 @@ module.exports = function (grunt) {
     var config = {
       cacheId: packageJson.name,
       dynamicUrlToDependencies: {
-        'dynamic/page1': [
-          path.join(rootDir, 'views', 'layout.jade'),
-          path.join(rootDir, 'views', 'page1.jade')
-        ],
-        'dynamic/page2': [
-          path.join(rootDir, 'views', 'layout.jade'),
-          path.join(rootDir, 'views', 'page2.jade')
-        ]
+        // 'dynamic/page1': [
+        //   path.join(rootDir, 'views', 'layout.jade'),
+        //   path.join(rootDir, 'views', 'page1.jade')
+        // ],
+        // 'dynamic/page2': [
+        //   path.join(rootDir, 'views', 'layout.jade'),
+        //   path.join(rootDir, 'views', 'page2.jade')
+        // ]
       },
       // If handleFetch is false (i.e. because this is called from swPrecache:dev), then
       // the service worker will precache resources but won't actually serve them.
       // This allows you to test precaching behavior without worry about the cache preventing your
       // local changes from being picked up during the development cycle.
       handleFetch: handleFetch,
-      logger: grunt.log.writeln,
+      // logger: grunt.log.writeln,
       staticFileGlobs: [
-        rootDir + '/css/**.css',
+        rootDir + '/styles/**.css',
         rootDir + '/**.html',
-        rootDir + '/images/**.*',
-        rootDir + '/js/**.js'
+        rootDir + '/**.ico',
+        rootDir + '/**.json',
+        rootDir + '/scripts/**.js',
+        rootDir + '/images/**.*'
       ],
       stripPrefix: rootDir + '/',
       // verbose defaults to false, but for the purposes of this demo, log more.
