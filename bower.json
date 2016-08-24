@@ -9,8 +9,8 @@
     "gold-phone-input": "PolymerElements/gold-phone-input#^1.0.0",
     "paper-button": "PolymerElements/paper-button#^1.0.0",
     "paper-input": "PolymerElements/paper-input#^1.0.0",
-    "firebase": "^3.3.0",
-    "angularfire": "^2.0.2",
+    "firebase": "2.4.2",
+    "angularfire": "1.2.0",
     "ng-polymer-elements": "^0.3.0"
   },
   "devDependencies": {
@@ -26,5 +26,8 @@
         "dist/js/bootstrap.js"
       ]
     }
+  },
+  "resolutions": {
+    "angularfire": "1.2.0"
   }
 }
