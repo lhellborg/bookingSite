@@ -7,7 +7,7 @@ self.addEventListener('install', function(event) {
         caches.open(staticCacheName).then(function(cache) {
             return cache.addAll([
                 '/',
-                'images/' + * + '.jpg',
+                'images/*.jpg',
                 'scripts/app.js',
                 'scripts/main.js',
                 'scripts/controllers/skins.js',
@@ -45,7 +45,7 @@ self.addEventListener('activate', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
-    // return with chached item if there is any otherwise take them from network
+    // return with cached item if there is any otherwise take them from network
     event.respondWith(
         caches.match(event.request).then(function(response) {
             if (response) return response;
