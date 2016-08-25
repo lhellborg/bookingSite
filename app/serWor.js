@@ -56,7 +56,8 @@ self.addEventListener('install', function(event) {
                 'bower_components/angular-aria/angular-aria.js',
                 'bower_components/ng-polymer-elements/ng-polymer-elements.js',
                 'bower_components/firebase/firebase.js',
-                'bower_components/angularfire/dist/angularfire.js'
+                'bower_components/angularfire/dist/angularfire.js',
+                'bower_components/ngstorage/ngStorage.js'
             ]);
         })
     );

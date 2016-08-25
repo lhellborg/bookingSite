@@ -52,6 +52,22 @@ h1.header {
     text-shadow: 2px 2px antiquewhite;
 }
 
+.internetUpdate {
+  color: antiquewhite;
+  text-align: left;
+  margin-top: 0px;
+  font-weight: 100;
+  font-size: smaller;
+}
+
+.internetUpdateOffline {
+  color: red;
+  text-align: left;
+  margin-top: 0px;
+  font-weight: 100;
+  font-size: smaller;
+}
+
 .filterText{
   color: antiquewhite;
   text-align: left;
@@ -60,6 +76,11 @@ h1.header {
   font-size: large;
 
 }
+
+.lineNoBottomBorder {
+  margin-bottom: 3px;
+}
+
 .navItems,
 .section {
   display: flex;

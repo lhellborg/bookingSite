@@ -1,4 +1,5 @@
 
+
 <h3 class="filterText">Filter by:</h3>
 <section class="row">
 	<div class="col-xs-3 col-sm-2 col-md-2 navItems">
@@ -21,16 +22,19 @@
 	</div>
 	<div class="col-xs-3 col-sm-2 col-md-2 articles">
 		<div class="productEntry clickable">
-			<img class="img-responsive clickable"  src="images/lamm2-small.jpg"  alt="available lambskins"  ng-click="productInfo.sold ='false'; productInfo.filterItem()" tabindex="-1">
-			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter =''; productInfo.filterItem()" aria-label="filter to view the all skins">All available</paper-button>
+			<img class="img-responsive clickable"  src="images/lamm2-small.jpg"  alt="available lambskins"  ng-click="productInfo.colorFilter =''; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter =''; productInfo.filterItem()" aria-label="filter to view all available skins">All available</paper-button>
 		</div>
 	</div>
 </section>
-<hr>
+<hr class="lineNoBottomBorder">
 
+ <div ng-if="productInfo.online" class="internetUpdate">You're online, products will show up in a short while.</div>
+ <div ng-if="!productInfo.online" class="internetUpdateOffline">You're offline, no booking can be made.</div>
 
+ <!-- online -->
 
-<article class="row" id="reserveItems" aria-hidden="false">
+<article ng-if="productInfo.online == true" class="row" id="reserveItems" aria-hidden="false">
 	<div class="col-xs-6 col-sm-3 col-md-2 section" ng-repeat="details in productInfo.products | filter: { color: productInfo.colorFilter}">
 		<div class="productEntry" ng-class="{true: 'threePicSold', false:'threePic clickable'}[details.sold==true]">
 			<paper-button ng-if="details.sold==true" class="soldBtn" raised tabindex="-1">Booked</paper-button>
@@ -44,11 +48,27 @@
 	</div>
 </article>
 
+	<!-- offline -->
+
+<article ng-if="productInfo.online == false" class="row items" id="reserveItemsOffline" aria-hidden="false">
+	<div class="col-xs-6 col-sm-3 col-md-2 section" ng-repeat="details in productInfo.products | filter: { color: productInfo.colorFilter}">
+		<div class="productEntry" ng-class="{true: 'threePicSold', false:'threePic clickable'}[details.sold==true]">
+			<paper-button ng-if="details.sold==true" class="soldBtn" raised tabindex="-1">Booked</paper-button>
+			<img ng-if="details.sold==true" class="img-responsive" src="images/lamm{{details.nr}}-small.jpg"  alt="lambskin{{details.nr}}">
+
+			<paper-button ng-if="details.sold==false" class="bokBtn clickable" raised ng-click="productInfo.modalToggleOffline(details)" aria-label="to booking modal window for skin{{details.nr}}">Looking</paper-button>
+			<img ng-if="details.sold==false" class="img-responsive lambImgs clickable"  src="images/lamm{{details.nr}}-small.jpg"  alt="lambskin{{details.nr}}"  ng-click="productInfo.modalToggleOffline(details)" tabindex="-1">
+			<br>
+ 		<hr>
+		</div>
+	</div>
+</article>
 
 
-        <!-- Modal -->
 
-<div class="modal fade" id="reserveModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle"  aria-describedby="modalDescription" aria-hidden="true" >
+        <!-- Modal online-->
+
+<div ng-if="productInfo.online == true" class="modal fade" id="reserveModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle"  aria-describedby="modalDescription" aria-hidden="true" >
   	<div class="modal-dialog">
    		 <div class="modal-content">
    		 	<div id="modalDescription" class="screen-reader-offscreen">"Beginning of dialog window. To book lambskin nr {{productInfo.selectedProduct.nr}}" fill in the form. Escape will cancel and close the window."</div>
@@ -67,3 +87,17 @@
   	</div>
 </div>
 
+	<!-- modal offline -->
+
+<div ng-if="productInfo.online == false" class="modal fade" id="reserveModalOffline" tabindex="-1" role="dialog" aria-labelledby="modalTitle"  aria-describedby="modalDescription" aria-hidden="true" >
+  	<div class="modal-dialog">
+   		 <div class="modal-content">
+   		 	<div id="modalDescription" class="screen-reader-offscreen">"Beginning of dialog window. YOu are currently offline and can't book any items. Escape will cancel and close the window."</div>
+      		<div class="modal-body">
+        		<img class="img-responsive" src="images/lamm{{productInfo.selectedProduct.nr}}-medium.jpg" alt="lamm {{productInfo.selectedProduct.nr}}">
+      		</div>
+			<p >You are currently offline and can't book this item, try again later!</p>
+			<paper-button class="closeBtn" data-dismiss="modal" raised ng-click="productInfo.closeModal()" aria-label="close the modal window">Close</paper-button>
+    	</div>
+  	</div>
+</div>

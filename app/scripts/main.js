@@ -13,6 +13,7 @@ if ('serviceWorker' in navigator) {
             console.log('service worker waiting');
         }
         console.log('registered a service worker with scope: ', registration.scope);
+
         // push notifications
         registration.pushManager.subscribe({
             userVisibleOnly: true

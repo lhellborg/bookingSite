@@ -8,15 +8,51 @@
  * Controller of the lambSkinsApp
  */
 angular.module('lambSkinsApp')
-  .controller('SkinsCtrl', function ($firebaseObject, $firebaseArray) {
+  .controller('SkinsCtrl', function ($firebaseObject, $firebaseArray, $localStorage, $window, $timeout) {
 
   	var vm = this;
+
+  	vm.online = navigator.onLine;
+  	vm.products = [];
 
   	var myFirebaseRef = new Firebase("https://lambskins.firebaseio.com/");
 
   	// vm.products = $firebaseObject(myFirebaseRef);
-  	vm.products = $firebaseArray(myFirebaseRef);
-  	console.log(vm.products);
+  	vm.productsFirebase = $firebaseArray(myFirebaseRef);
+
+
+
+  	// if offline use the localstored vm.currentProducts otherwise update the same with data from firebase
+  	$window.addEventListener("offline", function() {
+    	$timeout(function() {
+    		vm.online = false;
+    		checkInternetStatus();
+    		console.log("jag är offline")
+    	}, 1)
+
+      });
+
+	$window.addEventListener("online", function() {
+		vm.online = true;
+		checkInternetStatus();
+		console.log("jag är online")
+	});
+
+	var checkInternetStatus = function() {
+		if (vm.online) {
+			$localStorage.productsLocalStorage = vm.productsFirebase; //store the firebase data in localstorage
+			vm.products = vm.productsFirebase; // use the dat from firebase
+
+		} else if (!vm.online) {
+			vm.products = $localStorage.productsLocalStorage; //use the data stored in localstorage
+			alert("You are currently offline, no bookings can be made");
+			//disable the booking function
+		}
+	}
+
+	checkInternetStatus();
+	console.log(vm.products);
+
 
 // used the first time to set some data in firebase
 
@@ -60,7 +96,7 @@ angular.module('lambSkinsApp')
 	vm.firstTabStop;
 	vm.lastTabStop;
 
-	vm.filterItem = function() {
+	vm.filterItem = function() { //focus first elememt among the selected items
 	     // deferred this because the dom element might not be there yet
 	    setTimeout(function() {
 	        $(".bokBtn:first").focus();
@@ -77,11 +113,25 @@ angular.module('lambSkinsApp')
 		vm.showButton = true;
 		$("#reserveModal").modal('show');
 		$("#reserveModal").attr("aria-hidden", "false"); //enable voiceover interaction with the modal window
-		$(".modal").bind('keydown', trapTabKey); //listen for and trap the keyboard
-		vm.focusableElements = $(".modal").find(focusableElementsString); //get all focusable elements in modal
+		$("#reserveModal").bind('keydown', trapTabKey); //listen for and trap the keyboard
+		vm.focusableElements = $("#reserveModal").find(focusableElementsString); //get all focusable elements in modal
 		vm.focusableElements = Array.prototype.slice.call(vm.focusableElements);
 		vm.firstTabStop = vm.focusableElements[1];
 		vm.lastTabStop = vm.focusableElements[vm.focusableElements.length - 1];
+		vm.firstTabStop.focus();
+	};
+
+	vm.modalToggleOffline = function(details) {
+		$("#reserveItemsOffline").attr("aria-hidden", "true"); //unable to interact with the items on the main page
+		vm.focusedElementBeforeModal = document.activeElement; //save the current focused element to get back to when closing the modal
+		vm.selectedProduct = details;
+		$("#reserveModalOffline").modal('show');
+		$("#reserveModalOffline").attr("aria-hidden", "false"); //enable voiceover interaction with the modal window
+		$("#reserveModalOffline").bind('keydown', trapTabKey); //listen for and trap the keyboard
+		vm.focusableElements = $("#reserveModalOffline").find(focusableElementsString); //get all focusable elements in modal
+		vm.focusableElements = Array.prototype.slice.call(vm.focusableElements);
+		vm.firstTabStop = vm.focusableElements[0];
+		vm.lastTabStop = vm.focusableElements[0];
 		vm.firstTabStop.focus();
 	};
 

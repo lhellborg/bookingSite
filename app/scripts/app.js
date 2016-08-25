@@ -10,5 +10,5 @@
  */
 angular
   .module('lambSkinsApp', [
-    'ngAria', 'ng-polymer-elements', 'firebase'
+    'ngAria', 'ng-polymer-elements', 'firebase', 'ngStorage'
   ]);
