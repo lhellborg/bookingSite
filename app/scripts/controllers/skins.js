@@ -27,15 +27,14 @@ angular.module('lambSkinsApp')
     	$timeout(function() {
     		vm.online = false;
     		checkInternetStatus();
-    		console.log("jag är offline")
     	}, 1)
-
       });
 
 	$window.addEventListener("online", function() {
-		vm.online = true;
-		checkInternetStatus();
-		console.log("jag är online")
+		$timeout(function() {
+			vm.online = true;
+			checkInternetStatus();
+		}, 1)
 	});
 
 	var checkInternetStatus = function() {
@@ -45,7 +44,7 @@ angular.module('lambSkinsApp')
 
 		} else if (!vm.online) {
 			vm.products = $localStorage.productsLocalStorage; //use the data stored in localstorage
-			alert("You are currently offline, no bookings can be made");
+			//highlight offline message
 			//disable the booking function
 		}
 	}
