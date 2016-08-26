@@ -6,7 +6,7 @@ It can also be used in an offline mode with the use of **service workers**, but 
 
 The app has **filter** option which allows the user to filter between different categories by either tabbing or clicking images or buttons. When one category is selected the focus automatically goes to the first bookable item in the list.
 
-To book an item, select an image by clicking on it and a **modal window** will show up with an image and a form to fill in. The form and buttons uses **polymer elements** and is validated upon keypress. 
+To book an item, one has to select an image by clicking on it. A **modal window** will show up with an image and a form to fill in. The form and buttons uses **polymer elements** and is validated upon keypress. 
 
 The app uses a **responsive design** with the recommendations of **accesibility** from ARIA including roles, focus and labelling.
 
@@ -16,7 +16,7 @@ This project is generated with [yo angular generator](https://github.com/yeoman/
 
 ## Installation
 
-* `git clone` [this repository](https://github.com/lhellborg/restaurantReview)
+* `git clone` [this repository](https://github.com/lhellborg/bookingSite)
 * change into the new directory
 * type and run `npm install`
 * type and run `bower install`
