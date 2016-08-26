@@ -5,7 +5,10 @@
 		max-width: 1000px;
 		margin-right: auto;
 		margin-left: auto;
+	}
 
+	.modalPicOnline {
+		width: 70%;
 	}
 }
 

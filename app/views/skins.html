@@ -32,6 +32,13 @@
  <div ng-if="productInfo.online" class="internetUpdate">You're online, you can click an image or button to see a bigger picture and book the item.</div>
  <div ng-if="!productInfo.online" class="internetUpdateOffline">You're offline, no booking can be made.</div>
 
+ <div class="waitingWheel">
+ 	<!-- from http://www.ajaxload.info/ -->
+  	<img ng-if="productInfo.products.length == 0" src="images/ajax-loader.gif" alt="Loading..." />
+ </div>
+
+
+
  <!-- online -->
 
 <article ng-if="productInfo.online == true" class="row" id="reserveItems" aria-hidden="false">
@@ -73,16 +80,15 @@
    		 <div class="modal-content">
    		 	<div id="modalDescription" class="screen-reader-offscreen">"Beginning of dialog window. To book lambskin nr {{productInfo.selectedProduct.nr}}" fill in the form. Escape will cancel and close the window."</div>
       		<div class="modal-body">
-        		<img class="img-responsive" src="images/lamm{{productInfo.selectedProduct.nr}}-medium.jpg" alt="lamm {{productInfo.selectedProduct.nr}}">
-        		<h2 id="modalTitle" class="textRes">I want to reserve this product</h2>
+        		<img class="img-responsive modalPic" src="images/lamm{{productInfo.selectedProduct.nr}}-medium.jpg" alt="lamm {{productInfo.selectedProduct.nr}}">
+        		<h2 id="modalTitle" class="modalMessage">{{productInfo.messageToBuyer}}</h2>
       		</div>
       		<form is="iron-form" id="form">
 				  <paper-input type="text" ng-model="productInfo.reservationForm.name" label="Your name" required auto-validate autocomplete="on" autofocus error-message="Fill in your name if you want to reserve this skin" class="accountRequired" aria-label="Fill in your name if you want to reserve this skin"></paper-input>
 				  <gold-email-input ng-model="productInfo.reservationForm.email" label="your emailadress" auto-validate class="accountRequired" aria-label="Fill in your email adress if you want to reserve this skin" ></gold-email-input>
 				  <paper-button type="submit" id="reserveBtn" class="submitBtn" raised ng-click="productInfo.submitForm(productInfo.selectedProduct)" ng-show="productInfo.showButton" aria-label="reserve this skin for me">Reserve</paper-button>
 				  <paper-button class="closeBtn" data-dismiss="modal" raised ng-click="productInfo.closeModal()" aria-label="close the modal window">Close</paper-button>
-			</form><br>
-			<p >{{productInfo.messageToBuyer}}</p>
+			</form>
     	</div>
   	</div>
 </div>
@@ -94,7 +100,7 @@
    		 <div class="modal-content">
    		 	<div id="modalDescription" class="screen-reader-offscreen">"Beginning of dialog window. YOu are currently offline and can't book any items. Escape will cancel and close the window."</div>
       		<div class="modal-body">
-        		<img class="img-responsive" src="images/lamm{{productInfo.selectedProduct.nr}}-medium.jpg" alt="lamm {{productInfo.selectedProduct.nr}}">
+        		<img class="img-responsive modalPic" src="images/lamm{{productInfo.selectedProduct.nr}}-medium.jpg" alt="lamm {{productInfo.selectedProduct.nr}}">
       		</div>
 			<p >You are currently offline and can't book this item, try again later!</p>
 			<paper-button class="closeBtn" data-dismiss="modal" raised ng-click="productInfo.closeModal()" aria-label="close the modal window">Close</paper-button>

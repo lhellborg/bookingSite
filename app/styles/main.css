@@ -62,21 +62,6 @@ h1 {
       -18px 36px 1px #e4e3e2;
   }
 
-
-.infoBox {
-    border-style: groove;
-    padding: 10px;
-    margin: 20px;
-    font-size: large;
-    border-radius: 10px;
-    border-width: 3px;
-    background: radial-gradient(circle, antiquewhite, #ccc, #777);
-    color: black;
-    border-color: rgba(0, 0, 0, 0.43);
-    opacity: 0.8;
-    text-shadow: 2px 2px antiquewhite;
-}
-
 .internetUpdate {
   color: #234bea;
   text-align: left;
@@ -131,6 +116,12 @@ h1 {
   margin-bottom: 3px;
 }
 
+.waitingWheel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .navItems,
 .section {
   display: flex;
@@ -171,6 +162,19 @@ img {
 
 .modal-body {
   padding-bottom: 0px;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+}
+
+.modalPic {
+  display: block;
+  max-height: 100%;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.modalMessage {
+  margin: 0px;
 }
 
 .modal-content {
@@ -205,10 +209,6 @@ img {
     left: 70%;
 }
 
-.textRes {
-  margin-bottom: 0px;
-}
-
 #form {
   margin: 0 auto;
     max-width: 90%;
@@ -220,6 +220,7 @@ h2 {
   margin-left: 15px;
   font-size: 18px;
 }
+
  /*end modal*/
 
 .viewBtn {

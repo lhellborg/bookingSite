@@ -15,6 +15,7 @@ angular.module('lambSkinsApp')
   	vm.online = navigator.onLine;
   	vm.products = [];
 
+
   	var myFirebaseRef = new Firebase("https://lambskins.firebaseio.com/");
 
   	// vm.products = $firebaseObject(myFirebaseRef);
@@ -108,7 +109,8 @@ angular.module('lambSkinsApp')
 		$("#reserveItems").attr("aria-hidden", "true"); //unable to interact with the items on the main page
 		vm.focusedElementBeforeModal = document.activeElement; //save the current focused element to get back to when closing the modal
 		vm.selectedProduct = details;
-		vm.messageToBuyer = "";
+		$(".modalMessage").css("color", "black");
+		vm.messageToBuyer = "I want to reserve this product";
 		vm.showButton = true;
 		$("#reserveModal").modal('show');
 		$("#reserveModal").attr("aria-hidden", "false"); //enable voiceover interaction with the modal window
@@ -174,7 +176,9 @@ angular.module('lambSkinsApp')
 				vm.selectedProduct.sold = true;
 				vm.products.$save(vm.selectedProduct).then(function(ref) {
 					ref.key() === vm.selectedProduct.$id;
-					vm.messageToBuyer = "Good Choice " + vm.selectedProduct.reservedByName + "! We have reserved this skin for you.";
+					$(".modalMessage").css({"color": "blue", "font-size": "small"});
+					vm.messageToBuyer = "Good Choice " + vm.selectedProduct.reservedByName +
+						"! We will contact you on " + vm.selectedProduct.reservedByEmail +".";
 					vm.showButton = false;
 					$(".closeBtn").focus();
 					vm.focusedElementBeforeModal = $(".title"); //get focus back to the side after reserved a product
@@ -185,6 +189,7 @@ angular.module('lambSkinsApp')
 
 			}
 		} else {
+			$(".modalMessage").css("color", "red");
 			vm.messageToBuyer = "Please fill in all fields";
 		}
 
