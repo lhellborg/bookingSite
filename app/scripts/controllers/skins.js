@@ -177,7 +177,7 @@ angular.module('lambSkinsApp')
 					vm.messageToBuyer = "Good Choice " + vm.selectedProduct.reservedByName + "! We have reserved this skin for you.";
 					vm.showButton = false;
 					$(".closeBtn").focus();
-					vm.focusedElementBeforeModal = $(".infoBox"); //get focus back to the side after reserved a product
+					vm.focusedElementBeforeModal = $(".title"); //get focus back to the side after reserved a product
 				}, function(error) {
 					console.log("The read failed: " + error.code);
 					alert("Sorry, could not get the bookings now, try again later :-)");

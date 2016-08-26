@@ -2,40 +2,40 @@
 
 <h3 class="filterText">Filter by:</h3>
 <section class="row">
-	<div class="col-xs-3 col-sm-2 col-md-2 navItems">
+	<div class="col-xs-3 col-sm-2 col-md-2 articles">
 		<div class="productEntry clickable">
-			<img class="img-responsive clickable"  src="images/lamm1-small.jpg"  alt="grey lambskins"  ng-click="productInfo.colorFilter ='dark'; productInfo.filterItem()" tabindex="-1">
-			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='dark'; productInfo.filterItem()" aria-label="filter to view the grey skins">Grey lambskins</paper-button>
+			<img class="img-responsive clickable"  src="images/lamm2-small.jpg"  alt="available lambskins"  ng-click="productInfo.colorFilter =''; productInfo.soldFilter ='false'; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter =''; productInfo.soldFilter ='false'; productInfo.filterItem()"  aria-label="filter to view all available skins" ng-class="{selectedFilter: productInfo.colorFilter =='' && productInfo.soldFilter =='false'}">All bookable</paper-button>
 		</div>
 	</div>
 	<div class="col-xs-3 col-sm-2 col-md-2 navItems">
 		<div class="productEntry clickable">
-			<img class="img-responsive clickable"  src="images/lamm8-small.jpg"  alt="lightgrey lambskins"  ng-click="productInfo.colorFilter ='medium'; productInfo.filterItem()" tabindex="-1">
-			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='medium'; productInfo.filterItem()" aria-label="filter to view the lightgrey skins">Lightgrey lambskins</paper-button>
+			<img class="img-responsive clickable"  src="images/lamm1-small.jpg"  alt="grey lambskins"  ng-click="productInfo.colorFilter ='dark'; productInfo.soldFilter =''; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='dark'; productInfo.soldFilter =''; productInfo.filterItem()" aria-label="filter to view the grey skins" ng-class="{selectedFilter: productInfo.colorFilter == 'dark'}">Grey lambskins</paper-button>
+		</div>
+	</div>
+	<div class="col-xs-3 col-sm-2 col-md-2 navItems">
+		<div class="productEntry clickable">
+			<img class="img-responsive clickable"  src="images/lamm8-small.jpg"  alt="lightgrey lambskins"  ng-click="productInfo.colorFilter ='medium'; productInfo.soldFilter =''; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='medium'; productInfo.soldFilter =''; productInfo.filterItem()" aria-label="filter to view the lightgrey skins" ng-class="{selectedFilter: productInfo.colorFilter =='medium'}">Lightgrey lambskins</paper-button>
 		</div>
 	</div>
 	<div class="col-xs-3 col-sm-2 col-md-2 articles">
 		<div class="productEntry clickable">
-			<img class="img-responsive clickable"  src="images/lamm9-small.jpg"  alt="white lambskins"  ng-click="productInfo.colorFilter ='white'; productInfo.filterItem()" tabindex="-1">
-			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='white'; productInfo.filterItem()" aria-label="filter to view the white skins">White lambskins</paper-button>
-		</div>
-	</div>
-	<div class="col-xs-3 col-sm-2 col-md-2 articles">
-		<div class="productEntry clickable">
-			<img class="img-responsive clickable"  src="images/lamm2-small.jpg"  alt="available lambskins"  ng-click="productInfo.colorFilter =''; productInfo.filterItem()" tabindex="-1">
-			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter =''; productInfo.filterItem()" aria-label="filter to view all available skins">All available</paper-button>
+			<img class="img-responsive clickable"  src="images/lamm9-small.jpg"  alt="white lambskins"  ng-click="productInfo.colorFilter ='white'; productInfo.soldFilter =''; productInfo.filterItem()" tabindex="-1">
+			<paper-button class="viewBtn clickable" raised ng-click="productInfo.colorFilter ='white'; productInfo.soldFilter =''; productInfo.filterItem()" aria-label="filter to view the white skins" ng-class="{selectedFilter: productInfo.colorFilter == 'white'}">White lambskins</paper-button>
 		</div>
 	</div>
 </section>
 <hr class="lineNoBottomBorder">
 
- <div ng-if="productInfo.online" class="internetUpdate">You're online, products will show up in a short while.</div>
+ <div ng-if="productInfo.online" class="internetUpdate">You're online, you can click an image or button to see a bigger picture and book the item.</div>
  <div ng-if="!productInfo.online" class="internetUpdateOffline">You're offline, no booking can be made.</div>
 
  <!-- online -->
 
 <article ng-if="productInfo.online == true" class="row" id="reserveItems" aria-hidden="false">
-	<div class="col-xs-6 col-sm-3 col-md-2 section" ng-repeat="details in productInfo.products | filter: { color: productInfo.colorFilter}">
+	<div class="col-xs-6 col-sm-3 col-md-2 section" ng-repeat="details in productInfo.products | filter: { color: productInfo.colorFilter} | filter: {sold: productInfo.soldFilter}">
 		<div class="productEntry" ng-class="{true: 'threePicSold', false:'threePic clickable'}[details.sold==true]">
 			<paper-button ng-if="details.sold==true" class="soldBtn" raised tabindex="-1">Booked</paper-button>
 			<img ng-if="details.sold==true" class="img-responsive" src="images/lamm{{details.nr}}-small.jpg"  alt="lambskin{{details.nr}}">
