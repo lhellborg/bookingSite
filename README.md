@@ -22,7 +22,7 @@ This project is generated with [yo angular generator](https://github.com/yeoman/
 * type and run `bower install`
 
 ##Running
-Run `grunt serve` for preview on `http://localhost:9000/` in the web browser.
+Run `grunt serve` for preview on `http://localhost:9000/` of development code in the web browser or `grunt serve dist` for preview on `http://localhost:9000/` of production code.
 
 ## Build & development
 

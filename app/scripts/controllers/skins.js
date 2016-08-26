@@ -1,4 +1,4 @@
-'use strict';
+
 
 /**
  * @ngdoc function
@@ -9,6 +9,8 @@
  */
 angular.module('lambSkinsApp')
   .controller('SkinsCtrl', function ($firebaseObject, $firebaseArray, $localStorage, $window, $timeout) {
+
+	'use strict';
 
   	var vm = this;
 
@@ -28,14 +30,14 @@ angular.module('lambSkinsApp')
     	$timeout(function() {
     		vm.online = false;
     		checkInternetStatus();
-    	}, 1)
+    	}, 1);
       });
 
 	$window.addEventListener("online", function() {
 		$timeout(function() {
 			vm.online = true;
 			checkInternetStatus();
-		}, 1)
+		}, 1);
 	});
 
 	var checkInternetStatus = function() {
@@ -48,7 +50,7 @@ angular.module('lambSkinsApp')
 			//highlight offline message
 			//disable the booking function
 		}
-	}
+	};
 
 	checkInternetStatus();
 	console.log(vm.products);
@@ -89,12 +91,12 @@ angular.module('lambSkinsApp')
 	vm.messageToBuyer = ""; //message shown when the reserved button is clicked
 	vm.showButton = true; //linked to the reserved button in the modal which will disappear when clicked
 
-	vm.focusedElementBeforeModal;
+	vm.focusedElementBeforeModal = "";
 
 	var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-	vm.focusableElements;
-	vm.firstTabStop;
-	vm.lastTabStop;
+	vm.focusableElements = "";
+	vm.firstTabStop = "";
+	vm.lastTabStop = "";
 
 	vm.filterItem = function() { //focus first elememt among the selected items
 	     // deferred this because the dom element might not be there yet
