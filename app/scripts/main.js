@@ -1,7 +1,9 @@
 // register a service worker
 if ('serviceWorker' in navigator) {
     // register a serviceworker
-    navigator.serviceWorker.register('/serWor.js', {scope: '/'}).then(function(registration) {
+    navigator.serviceWorker.register('/serWor.js', {
+        scope: '/'
+    }).then(function(registration) {
         'use strict';
         if (!navigator.serviceWorker.controller) {
             return; //no service worker
@@ -21,13 +23,10 @@ if ('serviceWorker' in navigator) {
         }).then(function(sub) {
             console.log('endpoint:', sub.endpoint);
         }).catch(function(e) {
-            console.log("error", e)
+            console.log("error", e);
         });
     }).catch(function(err) {
         'use strict';
         console.log('serviceWorker not registered: ', err);
     });
 }
-
-
-

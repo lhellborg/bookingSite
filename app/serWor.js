@@ -1,5 +1,5 @@
 //the serviceWorker
-var staticCacheName = 'bookingStatic-v1'
+var staticCacheName = 'bookingStatic-v1';
 
 
 self.addEventListener('install', function(event) {
@@ -98,20 +98,18 @@ self.addEventListener('fetch', function(event) {
 self.addEventListener('message', function(event) {
     if (event.data.action === 'skipWaiting') {
         self.skipWaiting();
-        console.log('waiting worker installed')
+        console.log('waiting worker installed');
     }
 });
 
 // listen for push notifications
 self.addEventListener('push', function(event) {
-  console.log('Push message', event);
-  var title = 'Push message';
-  event.waitUntil(
-    self.registration.showNotification(title, {
-  "body": "New articles added",
-  'icon': 'images/favicon-16x16.png',
-  "vibrate": [200, 100, 200, 100, 200, 100, 400]
-}
-));
+    console.log('Push message', event);
+    var title = 'Push message';
+    event.waitUntil(
+        self.registration.showNotification(title, {
+            "body": "New articles added",
+            'icon': 'images/favicon-16x16.png',
+            "vibrate": [200, 100, 200, 100, 200, 100, 400]
+        }));
 });
-
