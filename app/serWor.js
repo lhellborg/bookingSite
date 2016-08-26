@@ -38,6 +38,7 @@ self.addEventListener('install', function(event) {
                 "images/lamm8-small.jpg",
                 "images/lamm9-medium.jpg",
                 "images/lamm9-small.jpg",
+                "images/ajax-loader.gif",
                 'scripts/app.js',
                 'scripts/main.js',
                 'scripts/controllers/skins.js',
@@ -103,41 +104,14 @@ self.addEventListener('message', function(event) {
 
 // listen for push notifications
 self.addEventListener('push', function(event) {
-
-var apiPath = '<apiPath>';
-event.waitUntil(registration.pushManager.getSubscription().then(function (subscription){
-
-    return fetch(apiPath).then(function(response){
-        if(response.status !== 200){
-            throw new Error();
-        }
-
-        return response.json().then(function(data){
-            var title = data.title;
-            var message = data.body;
-            var icon = data.icon;
-            var tag = data.tag;
-            var url = data.url;
-            return self.registration.showNotification(title,{
-               body: message,
-               icon: icon,
-               tag: tag,
-               data: url
-            });
-        })
-    }).catch(function(err){
-
-    })
-
-}));
-return;
+  console.log('Push message', event);
+  var title = 'Push message';
+  event.waitUntil(
+    self.registration.showNotification(title, {
+  "body": "New articles added",
+  'icon': 'images/favicon-16x16.png',
+  "vibrate": [200, 100, 200, 100, 200, 100, 400]
+}
+));
 });
 
-// manifest.json
-// {
-//   "name": "APPNAME",
-//   "gcm_sender_id": "SENDERID"
-// }
-// cURL request
-// curl --header "Authorization: key=APIKEY" -application/json" https://fcm.googleapis.com/fcm/send -d "{\"regi
-// \"notification\":{\"title\":\"test\",\"body\":\"testing\"},\"data\":{\"title\":\"erse\"}}"

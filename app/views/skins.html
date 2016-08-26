@@ -32,9 +32,9 @@
  <div ng-if="productInfo.online" class="internetUpdate">You're online, you can click an image or button to see a bigger picture and book the item.</div>
  <div ng-if="!productInfo.online" class="internetUpdateOffline">You're offline, no booking can be made.</div>
 
- <div class="waitingWheel">
+ <div class="waitingWheel" ng-if="productInfo.products.length == 0">
  	<!-- from http://www.ajaxload.info/ -->
-  	<img ng-if="productInfo.products.length == 0" src="images/ajax-loader.gif" alt="Loading..." />
+  	<img  src="images/ajax-loader.gif" alt="Loading..." />
  </div>
 
 
@@ -58,7 +58,7 @@
 	<!-- offline -->
 
 <article ng-if="productInfo.online == false" class="row items" id="reserveItemsOffline" aria-hidden="false">
-	<div class="col-xs-6 col-sm-3 col-md-2 section" ng-repeat="details in productInfo.products | filter: { color: productInfo.colorFilter}">
+	<div class="col-xs-6 col-sm-3 col-md-2 section" ng-repeat="details in productInfo.products | filter: { color: productInfo.colorFilter} | filter: {sold: productInfo.soldFilter}">
 		<div class="productEntry" ng-class="{true: 'threePicSold', false:'threePic clickable'}[details.sold==true]">
 			<paper-button ng-if="details.sold==true" class="soldBtn" raised tabindex="-1">Booked</paper-button>
 			<img ng-if="details.sold==true" class="img-responsive" src="images/lamm{{details.nr}}-small.jpg"  alt="lambskin{{details.nr}}">
